@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Payment System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .payment-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .payment-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .payment-form input[type="text"],
+    .payment-form input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .payment-form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .payment-form button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="payment-form">
+  <h2>Digital Payment</h2>
+  <form action="#" method="POST" onsubmit="submitForm(event)">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="upi" placeholder="UPI ID" required>
+    <input type="number" name="amount" placeholder="Amount (INR)" required>
+    <button type="submit">Proceed to Pay</button>
+  </form>
+</div>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const upi = event.target.upi.value;
+    const amount = event.target.amount.value;
+    const upiLink = `upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+    window.location.href = upiLink;
+  }
+</script>
+
+</body>
+</html>
